@@ -1,9 +1,4 @@
-----------------------------------------------
-A Number=A001
-Name=Michael
-Withdrawn Books=
-Fines Owed=0.0
-Back Fines=0.0
+
 ----------------------------------------------
 A Number=A002
 Name=Christopher
@@ -55,6 +50,12 @@ Back Fines=0.0
 ----------------------------------------------
 A Number=A010
 Name=David
+Withdrawn Books=
+Fines Owed=0.0
+Back Fines=0.0
+----------------------------------------------
+A Number=A001
+Name=Michael
 Withdrawn Books=
 Fines Owed=0.0
 Back Fines=0.0

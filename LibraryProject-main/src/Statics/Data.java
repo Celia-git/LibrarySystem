@@ -20,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,9 +107,9 @@ public final class Data {
                     if (keyValue[1].equalsIgnoreCase(ID)){
                         foundData = true;
                     }
+                }
                 if (foundData){
                     block.add(line);
-                }
                 }
             } else {
                 if (foundData) {
@@ -196,24 +197,15 @@ public final class Data {
         // Get an array of all lines in file, and lines to remove
         ArrayList<String> allLines = (ArrayList<String>) Files.readAllLines(Paths.get(filePath), StandardCharsets.UTF_8);
         ArrayList<String> removeLines = getDataBlock(data.getId(), allLines);
+        String oldEntries = String.join("&#: ", allLines);
+        String removeEntry = String.join("&#: ", removeLines);
+        removeEntry = BRK + "&#: " + removeEntry;
         
-        // Make an array of lines
-        ArrayList<String> keepLines = new ArrayList<String>();
-        for (String line:allLines){
-            boolean keepLine = true;
-            for (String remove:removeLines){
-                if (remove.trim().equalsIgnoreCase(line.trim())){
-                    if (!keepLines.isEmpty()){
-                        keepLines.remove(keepLines.size()-1);
-                    }
-                    keepLine = false;
-                }
-            }
-            if (keepLine){
-                keepLines.add(line);
-            }
-        }
+        String newEntries = oldEntries.replace(removeEntry, "");
         
+        // Make an array of lines to keep
+        ArrayList<String> keepLines = new ArrayList<String>(Arrays.asList(newEntries.split("&#: ")));
+                
         // Write lines to file in overwrite mode
         FileOutputStream fos = new FileOutputStream(filePath, false);
         PrintWriter out = new PrintWriter(fos);
@@ -222,6 +214,23 @@ public final class Data {
         }
         out.close();
         return;
+    }
+    
+    // Overwrite a file with new lines
+    public static void reviseFile(String dataType, ArrayList<String[]> formatted) throws IOException {
+        
+        String filePath = DIR + "/" + dataType + EXT;
+        FileWriter fw = new FileWriter(filePath);
+        PrintWriter out = new PrintWriter(fw);
+        for (String[] list : formatted) {
+            out.println(BRK);
+            for (String l:list){
+                out.println(l.trim());    
+            }
+        }
+        fw.close();
+        out.close();
+    
     }
 
 }

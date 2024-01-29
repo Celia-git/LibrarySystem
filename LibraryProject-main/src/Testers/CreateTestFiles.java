@@ -9,6 +9,7 @@ import Exceptions.FileOverwrite;
 import Statics.Data;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -112,13 +113,13 @@ public class CreateTestFiles {
      * @throws FileNotFoundException
      */
     public static void newStudents() throws FileOverwrite, FileNotFoundException, IOException {
-
+        ArrayList <String[]> formatted = new ArrayList<String[]>(); 
         for (int i = 0; i < aNums.length; i++) {
             Student s = new Student(aNums[i]);
             s.setName(names[i]);
-            Data.addNewEntry(s);
+            formatted.add(s.format());
         }
-
+        Data.reviseFile("student", formatted);
     }
 
     /**
@@ -128,7 +129,7 @@ public class CreateTestFiles {
      * @throws FileNotFoundException
      */
     public static void newBooks() throws FileOverwrite, FileNotFoundException, IOException {
-
+        ArrayList <String[]> formatted = new ArrayList<String[]>(); 
         for (int i = 0; i < ids.length; i++) {
             Book b = new Book(ids[i]);
             b.setAuthor(authors[i]);
@@ -136,9 +137,9 @@ public class CreateTestFiles {
             b.setDatePublished(dates[i]);
             b.setPublisher(publishers[i]);
             b.setDescription(description);
-            Data.addNewEntry(b);
+            formatted.add(b.format());
         }
-
+        Data.reviseFile("book", formatted);
     }
 
 }

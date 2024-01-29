@@ -1,34 +1,81 @@
+
 ----------------------------------------------
-ID=001
+ID=002
+Author=Joseph Heller
+Title=Catch-22
+Publisher=Simon & Schuster
+Date Published=1961
+Available=true
+Description=Lorem ipsum dolor sit amet
+----------------------------------------------
+ID=003
+Author=Fyodor Dostoevsky
+Title=Crime and Punishment
+Publisher=Penguin Books
+Date Published=1886
+Available=true
+Description=Lorem ipsum dolor sit amet
 ----------------------------------------------
 ID=004
 Author=Cormac McCarthy
 Title=Blood Meridian
+Publisher=Vintage Books
+Date Published=1985
+Available=true
+Description=Lorem ipsum dolor sit amet
 ----------------------------------------------
 ID=005
 Author=Gabriel García Márquez
 Title=One Hundred Years of Solitude
+Publisher=Harper
+Date Published=1967
+Available=true
+Description=Lorem ipsum dolor sit amet
 ----------------------------------------------
 ID=006
 Author=J.R.R. Tolkien
 Title=The Lord of the Rings
+Publisher=Houghton Mifflin Harcourt
+Date Published=1955
+Available=true
+Description=Lorem ipsum dolor sit amet
 ----------------------------------------------
 ID=007
+Author=Amor Towles
+Title=A Gentleman in Moscow
+Publisher=Penguin Books
+Date Published=2016
+Available=true
+Description=Lorem ipsum dolor sit amet
 ----------------------------------------------
 ID=008
 Author=George Orwell
 Title=1984
+Publisher=Houghton Mifflin Harcourt
+Date Published=1949
+Available=true
+Description=Lorem ipsum dolor sit amet
 ----------------------------------------------
 ID=009
 Author=Anthony Doerr
 Title=All the Light We Cannot See
+Publisher=Scribner
+Date Published=2014
+Available=true
+Description=Lorem ipsum dolor sit amet
 ----------------------------------------------
 ID=010
-----------------------------------------------
-ID=003
-Author=shit
-Title=Crime and Punishment
+Author=John Steinbeck
+Title=East of Eden
 Publisher=Penguin Books
-Date Published=1886
+Date Published=1952
+Available=true
+Description=Lorem ipsum dolor sit amet
+----------------------------------------------
+ID=001
+Author=J.R.R. Tolkien
+Title=The Hobbit
+Publisher=Houghton Mifflin
+Date Published=1937
 Available=true
 Description=Lorem ipsum dolor sit amet

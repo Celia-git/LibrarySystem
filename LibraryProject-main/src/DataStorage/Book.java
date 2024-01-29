@@ -253,6 +253,7 @@ public class Book extends DataStorage {
         // If not available, set Time withdrawn
         if (!available) {
             timeWithdrawn = ChronoUnit.DAYS.between(LocalDate.now(), dateWithdrawn);
+            
         }
     }
 
@@ -336,6 +337,11 @@ public class Book extends DataStorage {
      */
     public void testFine(int daysLate) {
         dateWithdrawn = LocalDate.now().minusDays(withdrawWindow + daysLate);
+    }
+    
+    public String getDueDate(){
+        return dateWithdrawn.plusDays(withdrawWindow).toString();
+
     }
 
 }

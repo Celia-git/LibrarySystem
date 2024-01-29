@@ -27,23 +27,14 @@ public class Tester {
      */
     public static void main(String[] args) throws IOException {
         
-        /* To create file data to test the program, uncomment this code.
-        CreateTestFiles test = new CreateTestFiles();
-        try {
-            test.newStudents();
-            test.newBooks();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Tester.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Tester.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
+        
+        
         User u;
         
         while (true) {
 
             
-                System.out.println("\nEnter 'c' to continue to program\nEnter 'late' to test the late fee application\nEnter admin pass to log in\nEnter 'q' to quit");
+                System.out.println("\nEnter 'c' to continue to program\nEnter 'late' to test the late fee application\nEnter admin pass 'admin' to access the rest of the functions\nEnter 'r' to reset the book and student file data\nEnter 'q' to quit");
                 Scanner in = new Scanner(System.in);
                 String entry = in.next();
                 switch (entry) {
@@ -68,8 +59,20 @@ public class Tester {
                         } catch (FileOverwrite ex) {
                         Logger.getLogger(Tester.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                        continue;
                     case "q":   // Break Infinity loop
                         break;
+                    case "r":   // Rewrite student and book file entries
+                        CreateTestFiles test = new CreateTestFiles();
+                        try {
+                            test.newStudents();
+                            test.newBooks();
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(Tester.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Tester.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        continue;
                     default:    // Try admin login with password
                         u = new Admin();
                         try {

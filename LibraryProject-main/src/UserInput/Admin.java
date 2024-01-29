@@ -11,6 +11,7 @@ import Statics.*;
 import Testers.LateFeeTester;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -221,6 +222,7 @@ public class Admin extends User {
                 b.setDescription(in.nextLine());
                 // after getting all necessary input for book object, write it to file
                 Data.addNewEntry(b);
+                System.out.println("New book added: "+ b.getName());
                 break;
             case "student":
                 System.out.println("Enter an ID for new student: ");
@@ -230,6 +232,7 @@ public class Admin extends User {
                 s.setName(in.nextLine());
                 //after getting input for student object, write to file
                 Data.addNewEntry(s);
+                System.out.println("New student added: "+ s.getName());
                 break;
             default:
                 throw new InvalidType(category);
@@ -282,10 +285,12 @@ public class Admin extends User {
                     throw new InvalidType(field);
         
             }
+            System.out.println(String.format("New %s: %s for book %s", field, value, book.getName()));
         }
         catch (FileNotFoundException f) {
             throw new InvalidAction("Modify", String.format("Book with %s %s not found", "ID", id));
         }
+        
         
     }
 
@@ -299,7 +304,7 @@ public class Admin extends User {
     public void deleteEntry(String category) throws InvalidType, FileNotFoundException, FileOverwrite, IOException {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Enter ID of file to be deleted: ");
+        System.out.println(String.format("Enter ID of %s to be deleted: ", category));
         String id = in.next();
         switch (category) {
             case "student":
@@ -324,6 +329,7 @@ public class Admin extends User {
                 // Throw Invalid Type Error if user input is not "student" or "book"
                 throw new InvalidType(category);
         }
+        System.out.println(String.format("%s with ID %s has been removed from the system", category, id));
     }
 
     /**
@@ -336,23 +342,20 @@ public class Admin extends User {
      * @throws FileOverwrite
      */
     public void withdrawBook() throws InvalidType, FileNotFoundException, InvalidAction, FileOverwrite, IOException {
-
+        
         Scanner in = new Scanner(System.in);
         System.out.println("Enter withdrawing student's A Number (Starting with A): ");
         String sID = in.next();
-        //try
         Student student = Search.getStudent("A Number", sID).get(0);
-        //catch
         
         System.out.println("Enter ID of book to be withdrawn: ");
         String bID = in.next();
         
-        //try
         Book book = Search.getBook("ID", bID).get(0);
-        //catch
         
         if (student.canWithdraw() && book.canWithdraw()) {
             student.withdraw(book);
+            System.out.println(String.format("%s withdrew %s by %s today, %s.  It is due by %s", student.getName(), book.getName(), book.getAuthor(), book.getDateWithdrawn(), book.getDueDate()));
         } else if (!student.canWithdraw()){
             System.out.println(String.format("No withdraw for %s. They owe %s in fines", student.getName(), student.getFines()+student.getBackFines()));
         } else if (!book.canWithdraw()){
@@ -367,6 +370,8 @@ public class Admin extends User {
         // Commit changes to file
         Data.overwrite(student);
         Data.overwrite(book);
+        
+        
     }
 
     /**
@@ -421,6 +426,7 @@ public class Admin extends User {
         if (s.getBackFines()>0){
             System.out.println(String.format("%s owes $%.2f in back fines on previously returned books", s.getName(),s.getBackFines()));
         }
+        System.out.println("End of "+s.getName()+"'s bill");
     }
 
     /**
