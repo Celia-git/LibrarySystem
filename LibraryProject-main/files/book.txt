@@ -1,0 +1,34 @@
+----------------------------------------------
+ID=001
+----------------------------------------------
+ID=004
+Author=Cormac McCarthy
+Title=Blood Meridian
+----------------------------------------------
+ID=005
+Author=Gabriel García Márquez
+Title=One Hundred Years of Solitude
+----------------------------------------------
+ID=006
+Author=J.R.R. Tolkien
+Title=The Lord of the Rings
+----------------------------------------------
+ID=007
+----------------------------------------------
+ID=008
+Author=George Orwell
+Title=1984
+----------------------------------------------
+ID=009
+Author=Anthony Doerr
+Title=All the Light We Cannot See
+----------------------------------------------
+ID=010
+----------------------------------------------
+ID=003
+Author=shit
+Title=Crime and Punishment
+Publisher=Penguin Books
+Date Published=1886
+Available=true
+Description=Lorem ipsum dolor sit amet
